@@ -1,7 +1,7 @@
 import axios from './api';
 
 async function authenticate(email, password, csrfToken) {
-  const url = `http://ec2-34-229-223-146.compute-1.amazonaws.com/api/user/token/`;
+  const url = `http://127.0.0.1:8000/api/user/token/`;
 
   const headers = {
     accept: 'application/json',

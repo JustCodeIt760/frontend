@@ -7,6 +7,21 @@ import LoginScreen from './screens/LoginScreen';
 import VehiclesList from './screens/VechileList';
 import { Colors } from './constants/styles';
 import Navbar from './Navbar'; // Import Navbar
+import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
+import ResetPasswordScreen from './screens/ResetPasswordScreen';
+
+const linking = {
+  prefixes: ['exp://exp.host/@justcodeit/pcaapp'],
+  config: {
+    screens: {
+      AuthStack: {
+        screens: {
+          ResetPassword: 'reset-password/:uid/:token',
+        },
+      },
+    },
+  },
+};
 
 const Stack = createNativeStackNavigator();
 
@@ -20,9 +35,12 @@ function AuthStack() {
       }}
     >
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+      <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
     </Stack.Navigator>
   );
 }
+
 
 function AuthenticatedStack() {
   return (
@@ -47,7 +65,7 @@ function Navigation() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       {isAuthenticated ? <AuthenticatedStack /> : <AuthStack />}
     </NavigationContainer>
   );
@@ -57,7 +75,7 @@ export default function App() {
   return (
     <AuthContextProvider>
       <StatusBar style="light" />
-      <Navigation />
+        <Navigation />
     </AuthContextProvider>
   );
 }
