@@ -22,7 +22,6 @@ function LoginScreen({ navigation }) {
   }
 
   const handleForgotPassword = () => {
-    // Navigate to ForgotPasswordScreen or trigger the password reset flow
     navigation.navigate('ForgotPassword');
   };
 

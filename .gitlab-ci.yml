@@ -1,0 +1,33 @@
+image: node:latest
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - install
+  - test
+  - build
+  - deploy
+
+install_dependencies:
+  stage: install
+  script:
+    - npm install
+
+run_tests:
+  stage: test
+  script:
+    - npm test
+    - npm install --save-dev jest react-native-testing-library
+
+build_app:
+  stage: build
+  script:
+    - npm run build
+
+deploy_app:
+  stage: deploy
+  script:
+    - echo "Deploying the app"
+    # Add your deployment scripts here

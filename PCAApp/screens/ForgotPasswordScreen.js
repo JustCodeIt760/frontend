@@ -9,9 +9,7 @@ export default function ForgotPasswordScreen() {
     const sendResetLink = async () => {
         try {
             const response = await axios.post(`${API_ENDPOINT}/api/user/password-reset/`, { email });
-            console.log("Password reset response:", response.data);
         } catch (error) {
-            console.error("Error during password reset:", error.response.data);
         }
     };
 
