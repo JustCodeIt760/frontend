@@ -1,33 +1,15 @@
 image: node:latest
 
-cache:
-  paths:
-    - node_modules/
-
 stages:
-  - install
-  - test
+  - lint
   - build
-  - deploy
 
-install_dependencies:
-  stage: install
+lint_job:
+  stage: lint
   script:
-    - npm install
+    - npm run lint
 
-run_tests:
-  stage: test
-  script:
-    - npm test
-    - npm install --save-dev jest react-native-testing-library
-
-build_app:
+build_ios_job:
   stage: build
   script:
-    - npm run build
-
-deploy_app:
-  stage: deploy
-  script:
-    - echo "Deploying the app"
-    # Add your deployment scripts here
+    - npm run build-ios
