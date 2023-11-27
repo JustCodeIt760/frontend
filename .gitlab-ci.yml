@@ -1,15 +1,28 @@
 image: node:latest
 
 stages:
-  - lint
+  - test
   - build
+  - deploy
 
-lint_job:
-  stage: lint
+test_job:
+  stage: test
   script:
-    - npm run lint
+    - npm run test
 
 build_ios_job:
   stage: build
   script:
     - npm run build-ios
+
+build_android_job:
+  stage: build
+  script:
+    - npm run build-android
+
+deploy_job:
+  stage: deploy
+  script:
+    - npm run deploy
+  only:
+    - main

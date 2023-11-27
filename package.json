@@ -4,16 +4,28 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "eslint .",
-    "build-ios": "expo build:ios"
+    "test": "jest"
   },
   "dependencies": {
-  
+    "@react-native-async-storage/async-storage": "1.18.2",
+    "@react-navigation/native-stack": "^6.9.13",
+    "axios": "^1.5.0",
+    "expo": "~49.0.8",
+    "expo-linking": "^6.0.0",
+    "expo-status-bar": "~1.6.0",
+    "react": "18.2.0",
+    "react-native": "0.72.4",
+    "react-native-gesture-handler": "~2.12.0",
+    "react-native-reanimated": "~3.3.0"
   },
   "devDependencies": {
-    
+    "@babel/core": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-react": "^7.23.3",
+    "metro-react-native-babel-preset": "^0.77.0"
   },
   "private": true
-}https://gitlab.com/pcaapp1/pcaapp-frontend.git
+}
