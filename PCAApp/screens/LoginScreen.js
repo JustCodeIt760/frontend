@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { Alert, View } from 'react-native';
-import Navbar from '../Navbar'; // Import Navbar
+import { Alert, View, Text, TouchableOpacity } from 'react-native';
+import Navbar from '../Navbar';
 import AuthContent from '../components/Auth/AuthContent';
 import LoadingOverlay from '../components/ui/LoadingOverlay';
 import { AuthContext } from '../store/auth-context';
@@ -10,11 +10,11 @@ function LoginScreen() {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const authCtx = useContext(AuthContext);
 
-  async function loginHandler({ email, password }) { // Changed 'username' to 'email'
+  async function loginHandler({ email, password }) {
     setIsAuthenticating(true);
     try {
-        const token = await login(email, password); // Changed 'username' to 'email'
-        authCtx.setAuthenticationToken(token);
+      const token = await login(email, password);
+      authCtx.setAuthenticationToken(token);
     } catch (error) {
       Alert.alert('Authentication failed!', error.message || 'Could not log you in. Please check your credentials or try again later!');
       setIsAuthenticating(false);
@@ -29,6 +29,9 @@ function LoginScreen() {
     <View>
       <Navbar showLogout={false}/>
       <AuthContent isLogin onAuthenticate={loginHandler} />
+      <TouchableOpacity onPress={() => {/* navigation logic for forgot password */}}>
+        <Text style={{ color: 'blue', textAlign: 'center', marginTop: 20 }}>Forgot My Password</Text>
+      </TouchableOpacity>
     </View>
   );
 }
